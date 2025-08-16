@@ -1,74 +1,159 @@
-import { Image, StyleSheet, Platform } from 'react-native';
+import { View } from "react-native";
+import EditableDropdown from "../components/editableDropdown";
+import { useEffect, useState } from "react";
+import { Option } from "../components/editableDropdown";
+import NoBlockSelectedPage from "../components/workoutPlanningPages/noBlockSelectedPage";
+import LabelModal from "../components/labellingModal";
+import GenericBlockPage from "../components/workoutPlanningPages/genericBlockPage";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
+export default function Index() {
+  // Loading items from AsyncStorage library, which stores data as JSON locally on user's phone
+  let getOptions = async () => {
+    // Gets data labelled "dropdownOptions" somewhere magically from phone storage
+    let savedOptions = await AsyncStorage.getItem("dropdownOptions").catch(
+      (r) => console.log(r)
+    );
+    // Assuming data has been saved, parse into javascript and set the options
+    if (savedOptions != null) {
+      setDropdownOptions(JSON.parse(savedOptions));
+    }
+  };
 
-export default function HomeScreen() {
+  // Saves options in the main dropdown (large one as the top of homepage), since
+  // user can add options that are meant to persist after app closes
+  let saveDropdownOptions = async () => {
+    // Sets item labelled "dropdownOptions" in AsyncStorage to be a JSON representation
+    // of the options, then catches any errors
+    await AsyncStorage.setItem(
+      "dropdownOptions",
+      JSON.stringify(dropdownOptions)
+    ).catch((reason) => {
+      alert(reason);
+    });
+  };
+
+  // Default option in dropdown is the "Add Block/Split" option, which is not deletable,
+  // will not collapse the dropdown when pressed, and will prompt the labelling modal
+  // to open since it has the optionType.add property
+  let [dropdownOptions, setDropdownOptions] = useState([
+    {
+      label: "Add Block/Split",
+      deletable: false,
+      collapseOnPress: false,
+      optionType: "add",
+    },
+  ]);
+
+  // On first mounting of this component (page load) call the getOptions() method
+  // to load data stored locally
+  useEffect(() => {
+    getOptions();
+  }, []);
+
+  // Typical state variables
+  let [modalVisible, setModalVisible] = useState(false);
+  let [modalText, setModalText] = useState("");
+  let [selectedBlockTab, setSelectedBlockTab] = useState("Add Block/Split");
+
+  // Function to return a page that reflects which dropdown option the user has
+  // selected. If no page is selected (the default option is selected), then
+  // the homepage is shown. Otherwise, a generic page with the title of the option
+  // will be generated. GenericBlockPage also takes a reference to the selectedBlockTab
+  // state variable, that way it can re-render with new data every time the selected tab
+  // changes.
+  const getPage = () => {
+    let page = <NoBlockSelectedPage></NoBlockSelectedPage>;
+    if (selectedBlockTab != "Add Block/Split") {
+      page = (
+        <GenericBlockPage
+          title={selectedBlockTab}
+          selectedBlockTab={selectedBlockTab}
+        ></GenericBlockPage>
+      );
+    }
+    return page;
+  };
+
+  // Function called when text is submitted by the modal; If an option with that
+  // name already exists, do nothing. Otherwise, create a new option, add it to the
+  // dropdown, close the modal, and save it.
+  const handleTextSubmit = () => {
+    // Search for that option
+    let found = false;
+    dropdownOptions.forEach((option) => {
+      if (option.label === modalText) {
+        found = true;
+      }
+    });
+
+    if (!found) {
+      // Add new option to dropdownOptions raw variable
+      let newOption = {
+        label: modalText,
+        deletable: true,
+        collapseOnPress: true,
+        optionType: "select",
+      };
+      dropdownOptions = [newOption].concat(dropdownOptions);
+
+      // Update state and close modal, then save options to local storage
+      setDropdownOptions(dropdownOptions);
+      setModalVisible(false);
+      saveDropdownOptions();
+    }
+  };
+
+  // Function called by dropdown when an option is deleted; Removes that option using
+  // filter, which deletes all items in list for which the passed function returns false.
+  // Then sets selected page to the default option (which is always at the end
+  // of the list), update state, and save options to local storage.
+  const handleOptionDelete = (item: Option) => {
+    dropdownOptions = dropdownOptions.filter((cur) => {
+      return cur.label != item.label;
+    });
+    setSelectedBlockTab(dropdownOptions[dropdownOptions.length - 1].label);
+    setDropdownOptions(dropdownOptions);
+    saveDropdownOptions();
+  };
+
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12'
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          Tap the Explore tab to learn more about what's included in this starter app.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          When you're ready, run{' '}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+    <View
+      style={{
+        flex: 1,
+        padding: 5,
+        alignItems: "center",
+        justifyContent: "flex-start",
+      }}
+    >
+      {/** Editable dropdown menu which can set selected tab, delete options, and
+       * open/close the modal */}
+      <EditableDropdown
+        label="Block/Split"
+        options={dropdownOptions}
+        onOptionDelete={handleOptionDelete}
+        setModalVisible={setModalVisible}
+        setSelectedBlockTab={setSelectedBlockTab}
+      ></EditableDropdown>
+
+      {/** Modal which can change its own visibility, change the state variable modalText,
+       * and call a function when text is submitted */}
+      <LabelModal
+        label="Add Block/Split"
+        visibility={modalVisible}
+        setVisibilty={setModalVisible}
+        setText={setModalText}
+        handleTextSubmit={handleTextSubmit}
+      ></LabelModal>
+
+      <View
+        style={{
+          flex: 1,
+          flexDirection: "row",
+        }}
+      >
+        {getPage()}
+      </View>
+    </View>
   );
 }
-
-const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
-  },
-});

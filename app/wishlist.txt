@@ -1,0 +1,15 @@
+Things to add:
+
+- In-app editable spreadsheets using React Native tables and Google Sheets API
+
+Help Tab Features to Explain:
+
+Main page:
+Adding/removing splits
+Adding/removing exercises
+Adding/removing spreadsheets
+
+Calculator pages:
+Brief explanation of bar load
+Explanation of e1RM
+Explanation of DOTS, WILKS, and IPF GL
