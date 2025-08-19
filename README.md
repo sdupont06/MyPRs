@@ -1,50 +1,5 @@
-# Welcome to your Expo app 👋
+# About
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+	MyPRs is solo project I created my freshman year of college in order to gain more experience with React and general app development. As a Teen III USAPL lifter myself, a workout app was an obvious choice for this, and was designed with all of the features I'd like to see in an app like this.
 
-## Get started
-
-1. Install dependencies
-
-   ```bash
-   npm install
-   ```
-
-2. Start the app
-
-   ```bash
-    npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+	MyPRs is still very much in development! It is not currently listed on any app stores since I don't feel especially inclined to lose money on this project, however it is fully functional and I would be more than happy to release it publicly if the time felt right. I plan to add tons more features, including my own in-app editable spreadsheet interface, tracking capabilities for runners, perhaps a macro tracker, and more. Any suggestions for improvement are highly appreciated. From an aspiring software engineer, thank you for checking out MyPRs. Have a great lift!
