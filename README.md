@@ -15,10 +15,13 @@ for runners, perhaps a macro tracker, and more. Any suggestions for improvement
 are highly appreciated. From an aspiring software engineer, thank you for checking
 out MyPRs. Have a great lift!
 
-![alt text][ss1] ![alt text][ss2]
-![alt text][ss3] ![alt text][ss4]
+Some app screenshots are included below. Feel free to contact me for more examples!
 
-[ss1]: https://github.com/sdupont06/MyPRs/blob/main/Simulator%20Screenshot%20-%20iPhone%20SE%20(3rd%20generation)%20-%202025-03-18%20at%2012.18.00.png
-[ss2]: https://github.com/sdupont06/MyPRs/blob/main/Simulator%20Screenshot%20-%20iPhone%20SE%20(3rd%20generation)%20-%202025-03-18%20at%2012.18.05.png
-[ss3]: https://github.com/sdupont06/MyPRs/blob/main/Simulator%20Screenshot%20-%20iPhone%20SE%20(3rd%20generation)%20-%202025-03-18%20at%2012.18.11.png
-[ss4]: https://github.com/sdupont06/MyPRs/blob/main/Simulator%20Screenshot%20-%20iPhone%20SE%20(3rd%20generation)%20-%202025-03-18%20at%2012.18.15.png
+<img width="375" height="675" alt="Simulator Screenshot - iPhone SE (3rd generation) - 2025-03-18 at 12 18 15" src="https://github.com/user-attachments/assets/22d1c7d1-7bea-4191-94a6-0ce54d030fc9" />
+
+<img width="375" height="675" alt="Simulator Screenshot - iPhone SE (3rd generation) - 2025-03-18 at 12 18 11" src="https://github.com/user-attachments/assets/21b81742-8f59-4b73-ab25-d670b3110945" />
+
+<img width="375" height="675" alt="Simulator Screenshot - iPhone SE (3rd generation) - 2025-03-18 at 12 18 05" src="https://github.com/user-attachments/assets/4d8ef2f5-0240-4697-ac36-12c405656181" />
+
+<img width="375" height="675" alt="Simulator Screenshot - iPhone SE (3rd generation) - 2025-03-18 at 12 18 00" src="https://github.com/user-attachments/assets/7333b6f2-ae38-416d-8632-86710c9e4205" />
+
