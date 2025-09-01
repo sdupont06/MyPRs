@@ -15,6 +15,9 @@ for runners, perhaps a macro tracker, and more. Any suggestions for improvement
 are highly appreciated. From an aspiring software engineer, thank you for checking
 out MyPRs. Have a great lift!
 
+<img src="https://github.com/sdupont06/MyPRs/blob/main/Simulator%20Screenshot%20-%20iPhone%20SE%20(3rd%20generation)%20-%202025-03-18%20at%2012.18.00.png
+" width="48">
+
 ![alt text][ss1]
 ![alt text][ss2]
 ![alt text][ss3]
