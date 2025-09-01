@@ -14,3 +14,13 @@ including my own in-app editable spreadsheet interface, tracking capabilities
 for runners, perhaps a macro tracker, and more. Any suggestions for improvement
 are highly appreciated. From an aspiring software engineer, thank you for checking
 out MyPRs. Have a great lift!
+
+![alt text][ss1]
+![alt text][ss2]
+![alt text][ss3]
+![alt text][ss4]
+
+[ss1]: https://github.com/sdupont06/MyPRs/blob/main/Simulator%20Screenshot%20-%20iPhone%20SE%20(3rd%20generation)%20-%202025-03-18%20at%2012.18.00.png
+[ss2]: https://github.com/sdupont06/MyPRs/blob/main/Simulator%20Screenshot%20-%20iPhone%20SE%20(3rd%20generation)%20-%202025-03-18%20at%2012.18.05.png
+[ss3]: https://github.com/sdupont06/MyPRs/blob/main/Simulator%20Screenshot%20-%20iPhone%20SE%20(3rd%20generation)%20-%202025-03-18%20at%2012.18.11.png
+[ss4]: https://github.com/sdupont06/MyPRs/blob/main/Simulator%20Screenshot%20-%20iPhone%20SE%20(3rd%20generation)%20-%202025-03-18%20at%2012.18.15.png
